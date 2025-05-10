@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'system-ui', 'sans-serif';
+}
+
+body {
+    background-image: url('../images/main/background.png');
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+/* 图片网格 */
+.image-grid {
+    display: grid;
+    /* 设置合理的列宽 */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* 卡片容器样式 */
+.image-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    /* 确保卡片有明确的尺寸 */
+    width: 100%;
+    aspect-ratio: 3/4;
+    /* 保持宽高比 */
+}
+
+.image-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+}
+
+/* 图片样式 */
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+/* 悬停时图片效果 */
+.image-card:hover img {
+    transform: scale(1.1);
+}
+
+/* 文字覆盖层样式 */
+.text-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+/* 悬停时文字覆盖层效果 */
+.image-card:hover .text-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 描述样式 */
+.text-overlay p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    transform: translateY(10px);
+    transition: transform 0.3s ease 0.2s;
+}
+
+.image-card:hover .text-overlay p {
+    transform: translateY(0);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .image-grid {
+        /* 移动端单列显示 */
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>胡格吉勒</title>
+    <style>
+        .hu {
+            float: left;
+            background-image: url('./images/stoins6/hu.jpg');
+            background-repeat: no-repeat;
+            width: 550px;
+            height: 720px;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform, filter;
+        }
+
+        .zhaopian {
+            float: left;
+            background-image: url('./images/stoins6/hu.png');
+            background-repeat: no-repeat;
+            width: 90px;
+            height: 400px;
+            margin-top: 220px;
+            margin-left: 100px;
+            margin-right: 100px;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform, filter;
+        }
+
+        .zi {
+            font-size: 80px;
+            transition: all 0.3s ease;
+            will-change: transform, color;
+        }
+
+        body {
+            background-image: url('./images/background.jpg');
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        /* 新增样式：响应式布局 */
+        @media (max-width: 1200px) {
+            .hu {
+                width: 450px;
+                height: 580px;
+            }
+
+            .zhaopian {
+                width: 70px;
+                height: 320px;
+                margin-top: 180px;
+                margin-left: 50px;
+                margin-right: 50px;
+            }
+
+            .zi {
+                font-size: 60px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hu {
+                float: none;
+                width: 100%;
+                height: 400px;
+                background-size: contain;
+            }
+
+            .zhaopian {
+                display: none;
+            }
+
+            .zi {
+                float: none;
+                font-size: 40px;
+                display: block;
+                width: 100%;
+                padding: 20px;
+            }
+        }
+
+        /* 新增样式：动画效果 */
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 1.5s ease-out forwards;
+            transform: translateX(-100px);
+            opacity: 0;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 1.5s ease-out forwards;
+            transform: translateX(100px);
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* 新增鼠标交互效果 */
+        .hu:hover {
+            transform: scale(1.03) rotate(1deg);
+            filter: brightness(1.1) saturate(1.2);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        .zhaopian:hover {
+            transform: scale(1.05);
+            filter: brightness(1.15);
+        }
+
+        .zi:hover {
+            transform: translateY(-5px);
+            text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            color: #ffd700;
+        }
+
+        /* 文字光晕效果 */
+        .zi span {
+            display: inline-block;
+            transition: all 0.2s ease-out;
+        }
+
+        /* 视差容器 */
+        .parallax-container {
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body class="parallax-container">
+    <div class="hu slide-in-left"></div>
+    <div class="zhaopian fade-in"></div>
+    <div class="zi slide-in-right">
+        <span>非</span><span>物</span><span>质</span><span>文</span><span>化</span><span>遗</span><span>产</span><span>呼</span><span>麦</span><span>传</span><span>承</span><span>人</span>
+        。
+        <span>呼</span><span>麦</span><span>是</span><span>一</span><span>种</span><span>独</span><span>特</span><span>的</span><span>歌</span><span>唱</span><span>艺</span><span>术</span>，
+        <span>演</span><span>唱</span><span>者</span><span>运</span><span>用</span><span>特</span><span>殊</span><span>的</span><span>发</span><span>声</span><span>技</span><span>巧</span>，
+        <span>能</span><span>同</span><span>时</span><span>唱</span><span>出</span><span>两</span><span>个</span><span>及</span><span>以</span><span>上</span><span>的</span><span>声</span><span>部</span>，
+        <span>被</span><span>称</span><span>为</span><span>“</span><span>喉</span><span>音</span><span>艺</span><span>术</span><span>”</span>
+        ，
+        <span>在</span><span>蒙</span><span>古</span><span>族</span><span>文</span><span>化</span><span>中</span><span>有</span><span>着</span><span>重</span><span>要</span><span>地</span><span>位</span>。
+    </div>
+
+    <script>
+        // 检测元素是否在视口中
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // 为元素添加动画类
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.hu, .zhaopian, .zi');
+
+            elements.forEach(element => {
+                if (isInViewport(element)) {
+                    // 已经添加动画类则跳过
+                    if (element.classList.contains('slide-in-left') ||
+                        element.classList.contains('slide-in-right') ||
+                        element.classList.contains('fade-in')) {
+                        return;
+                    }
+
+                    if (element.classList.contains('hu')) {
+                        element.classList.add('slide-in-left');
+                    } else if (element.classList.contains('zhaopian')) {
+                        element.classList.add('fade-in');
+                    } else {
+                        element.classList.add('slide-in-right');
+                    }
+                }
+            });
+        }
+
+        // 文字悬停效果
+        function setupTextHoverEffects() {
+            const characters = document.querySelectorAll('.zi span');
+            characters.forEach(char => {
+                char.addEventListener('mouseenter', function () {
+                    this.style.transform = 'scale(1.2) translateY(-5px)';
+                    this.style.color = '#ffd700';
+                    this.style.textShadow = '0 0 15px rgba(255, 215, 0, 0.7)';
+                });
+
+                char.addEventListener('mouseleave', function () {
+                    this.style.transform = '';
+                    this.style.color = '';
+                    this.style.textShadow = '';
+                });
+            });
+        }
+
+        // 视差滚动效果
+        function setupParallaxEffect() {
+            window.addEventListener('mousemove', function (e) {
+                const moveX = (e.clientX - window.innerWidth / 2) * 0.02;
+                const moveY = (e.clientY - window.innerHeight / 2) * 0.02;
+
+                document.querySelector('.hu').style.transform = `translate(${moveX}px, ${moveY}px) scale(1.01)`;
+                document.querySelector('.zhaopian').style.transform = `translate(${-moveX / 2}px, ${-moveY / 2}px) scale(1.01)`;
+            });
+        }
+
+        // 波纹点击效果
+        function setupRippleEffect() {
+            document.body.addEventListener('click', function (e) {
+                const ripple = document.createElement('div');
+                ripple.className = 'ripple';
+
+                // 设置波纹位置
+                ripple.style.left = `${e.clientX}px`;
+                ripple.style.top = `${e.clientY}px`;
+
+                // 添加到页面
+                document.body.appendChild(ripple);
+
+                // 动画结束后移除
+                setTimeout(() => {
+                    ripple.style.opacity = '0';
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 500);
+                }, 500);
+            });
+
+            // 添加波纹样式
+            const style = document.createElement('style');
+            style.textContent = `
+                .ripple {
+                    position: absolute;
+                    border-radius: 50%;
+                    background-color: rgba(255, 255, 255, 0.3);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                    z-index: 9999;
+                }
+                
+                @keyframes ripple {
+                    to {
+                        transform: scale(2.5);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // 初始加载时检查
+        window.addEventListener('load', function () {
+            animateOnScroll();
+            setupTextHoverEffects();
+            setupParallaxEffect();
+            setupRippleEffect();
+        });
+
+        // 滚动时检查
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+
+</html>

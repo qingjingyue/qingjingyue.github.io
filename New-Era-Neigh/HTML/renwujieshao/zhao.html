@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赵丽颖</title>
+    <style>
+        body {
+            background-image: url('./images/background.jpg');
+            width: 1920px;
+            margin: 0 auto;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* width: 100vw;
+            height: 100vh; */
+        }
+
+        .box .zhao {
+            background-image: url('./images/stoins6/zhao.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-width: 810px;
+            height: 1080px;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+            animation-delay: 0.2s;
+        }
+
+        .box .name {
+            background-image: url('./images/stoins6/zhao.png');
+            background-repeat: no-repeat;
+            background-size: 30%;
+            background-position: center center;
+            min-width: 200px;
+            height: 1080px;
+            transition: all 0.5s ease;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+            animation-delay: 0.6s;
+        }
+
+        .box .name:hover {
+            background-size: 40%;
+        }
+
+        .box .text {
+            max-width: 910px;
+            font-size: 65px;
+            text-indent: 2em;
+            margin: 0 50px 0 0;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+            animation-delay: 1.0s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="zhao"></div>
+        <div class="name"></div>
+        <div class="text">中国内地女演员，她通过参与宣传非遗文化的活动、拍摄相关照片等方式，助力非遗文化的传播。如2025年，一组她身着畲族服饰的照片在网上疯传，为宣传非遗文化起到了积极作用。</div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>非遗總概——技艺类</title>
+    <link rel="stylesheet" href="./CSS/tongyong.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <link rel="stylesheet" href="./CSS/daohang.css">
+    <div class="nav-container">
+        <div class="logo" class="fl"></div>
+        <div class="cllo"></div>
+        <nav class="fr">
+            <ul class="lr">
+                <li><a href="./classify1.html">技艺类</a></li>
+                <li><a href="./classify2.html">民俗类</a></li>
+                <li><a href="./classify3.html">食品类</a></li>
+                <li><a href="./classify4.html">乐器类</a></li>
+                <li><a href="./classify5.html">语言类</a></li>
+                <li><a href="./classify6.html">其他类</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div style="margin-top: 20px; padding: 20px;"></div>
+    <div class="container">
+        <main>
+            <section class="image-grid"></section>
+        </main>
+    </div>
+    <script>
+        // 获取 .image-grid 元素
+        const imageGrid = document.querySelector('.image-grid');
+
+        // 从 JSON 文件加载数据
+        async function loadCardData() {
+            try {
+                // 显示加载状态
+                imageGrid.innerHTML = '<div class="loading-message">加载中...</div>';
+
+                // 发起 HTTP 请求获取 JSON 数据
+                const response = await fetch('./JSON/data1.json');
+
+                // 检查请求是否成功
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                // 解析 JSON 数据
+                const cardData = await response.json();
+
+                // 清空加载状态
+                imageGrid.innerHTML = '';
+
+                // 生成卡片
+                generateCards(cardData);
+
+                return cardData;
+            } catch (error) {
+                console.error('加载卡片数据时出错:', error);
+                imageGrid.innerHTML = '<div class="error-message">加载数据失败，请稍后再试。</div>';
+                return [];
+            }
+        }
+
+        // 根据数据生成卡片
+        function generateCards(cardData) {
+            // 遍历 cardData 数组，动态创建 .image-card 元素
+            cardData.forEach(data => {
+                // 创建 .image-card 元素
+                const imageCard = document.createElement('div');
+                imageCard.classList.add('image-card');
+
+                // 创建 img 元素
+                const img = document.createElement('img');
+                img.src = data.imgSrc;
+                img.alt = data.alt;
+                imageCard.appendChild(img);
+
+                // 创建 .text-overlay 元素
+                const textOverlay = document.createElement('div');
+                textOverlay.classList.add('text-overlay');
+
+                // 创建 p 元素并添加描述文本
+                const p = document.createElement('p');
+                p.textContent = data.description;
+                textOverlay.appendChild(p);
+
+                // 将 .text-overlay 元素添加到 .image-card 中
+                imageCard.appendChild(textOverlay);
+
+                // 将 .image-card 元素添加到 .image-grid 中
+                imageGrid.appendChild(imageCard);
+            });
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', loadCardData);
+    </script>
+</body>
+
+</html>

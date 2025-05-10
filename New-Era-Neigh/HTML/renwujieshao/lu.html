@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陆金喜</title>
+    <style>
+        body {
+            background-image: url('./images/background.jpg');
+            width: 1920px;
+            margin: 0 auto;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* width: 100vw;
+            height: 100vh; */
+        }
+
+        .box .lu {
+            background-image: url('./images/stoins6/lu.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-width: 810px;
+            height: 1080px;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+            animation-delay: 0.2s;
+        }
+
+        .box .name {
+            background-image: url('./images/stoins6/lu.png');
+            background-repeat: no-repeat;
+            background-size: 30%;
+            background-position: center center;
+            min-width: 200px;
+            height: 1080px;
+            transition: all 0.5s ease;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+            animation-delay: 0.6s;
+        }
+
+        .box .name:hover {
+            background-size: 40%;
+        }
+
+        .box .text {
+            max-width: 910px;
+            font-size: 65px;
+            text-indent: 2em;
+            margin: 0 50px 0 0;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+            animation-delay: 1.0s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="lu"></div>
+        <div class="name"></div>
+        <div class="text">曜变建盏复原的第一人，耗费近20年心血成功复原了中国历史长河中消失的珍贵瓷器曜变建盏，让这一古老的制瓷技艺重新回到人们的视野。</div>
+    </div>
+</body>
+
+</html>

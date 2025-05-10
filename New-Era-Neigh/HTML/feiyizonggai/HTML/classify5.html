@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>非遗總概——语言类</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem;
+            background-image: url('./images/main/background.png');
+            color: #334155;
+        }
+
+        .container {
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .image-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            width: 100%;
+            aspect-ratio: 3/4;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-title {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            z-index: 2;
+            transition: all 0.4s ease;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .text-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6));
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+
+        .image-card:hover .card-title {
+            top: 0;
+            transform: translateY(0);
+            font-size: 1.2rem;
+            padding: 0.75rem 1rem;
+            background-color: rgba(0, 0, 0, 0.85);
+        }
+
+        .image-card:hover .text-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .text-overlay p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .image-grid {
+                /* 移动端单列显示 */
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <link rel="stylesheet" href="./CSS/daohang.css">
+    <div class="nav-container">
+        <div class="logo" class="fl"></div>
+        <div class="cllo"></div>
+        <nav class="fr">
+            <ul class="lr">
+                <li><a href="./classify1.html">技艺类</a></li>
+                <li><a href="./classify2.html">民俗类</a></li>
+                <li><a href="./classify3.html">食品类</a></li>
+                <li><a href="./classify4.html">乐器类</a></li>
+                <li><a href="./classify5.html">语言类</a></li>
+                <li><a href="./classify6.html">其他类</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div style="margin-top: 20px; padding: 20px;"></div>
+    <div class="container">
+        <main>
+            <section class="image-grid" id="card-grid"></section>
+        </main>
+    </div>
+    <script>
+        const cardGrid = document.getElementById('card-grid');
+
+        // 生成随机颜色的函数
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // 读取 JSON 文件
+        fetch('./JSON/data5.json')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(card => {
+                    const cardElement = document.createElement('div');
+                    cardElement.classList.add('image-card');
+                    // 为卡片设置随机背景颜色
+                    cardElement.style.backgroundColor = getRandomColor();
+
+                    const titleElement = document.createElement('h2');
+                    titleElement.classList.add('card-title');
+                    titleElement.textContent = card.title;
+
+                    const overlayElement = document.createElement('div');
+                    overlayElement.classList.add('text-overlay');
+
+                    const descriptionElement = document.createElement('p');
+                    descriptionElement.textContent = card.description;
+
+                    overlayElement.appendChild(descriptionElement);
+                    cardElement.appendChild(titleElement);
+                    cardElement.appendChild(overlayElement);
+                    cardGrid.appendChild(cardElement);
+                });
+            })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+.itme1 {
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-container {
+    position: relative;
+    max-width: 1920px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.slider-images {
+    position: relative;
+    height: 0;
+    padding-top: 56.25%;
+    /* 16:9比例 */
+}
+
+.slider-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.slider-image.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px;
+    /* 增大图标间距 */
+    z-index: 2;
+}
+
+.slider-dot {
+    width: 80px;
+    height: 60px;
+    cursor: pointer;
+    background-image: url('../images/item1/white.png');
+    /* 默认白色图标 */
+    background-size: contain;
+    /* 自适应容器尺寸 */
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.3s ease;
+    /* 保留缩放过渡 */
+}
+
+.slider-dot:hover {
+    transform: scale(1.1);
+    /* 悬停微放大 */
+}
+
+.slider-dot.active {
+    background-image: url('../images/item1/red.png');
+    /* 激活时红色图标 */
+    transform: scale(1.2);
+    /* 选中时放大 */
+}

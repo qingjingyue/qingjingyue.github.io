@@ -1,0 +1,56 @@
+.stoil6 {
+    display: flex;
+    justify-content: center;
+}
+
+.renwuzhao {
+    background-image: url('../images/stoins6/hu.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 810px;
+    height: 1080px;
+    transition: background-image 0.5s ease;
+}
+
+.jianjie {
+    background-image: url('../images/stoins6/renwujieshao.png');
+    background-repeat: no-repeat;
+    background-size: 22%;
+    background-position: center center;
+    width: 510px;
+    height: 1080px;
+}
+
+.renwuming {
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: center left;
+    width: 200px;
+    height: 1080px;
+    transition: all 0.5s ease;
+}
+
+#hu {
+    background-image: url('../images/stoins6/hu.png');
+}
+
+#zhao {
+    background-image: url('../images/stoins6/zhao.png');
+}
+
+#lu {
+    background-image: url('../images/stoins6/lu.png');
+}
+
+#hu:hover {
+    background-size: 40%;
+}
+
+#zhao:hover {
+    background-size: 40%;
+}
+
+#lu:hover {
+    background-size: 40%;
+}

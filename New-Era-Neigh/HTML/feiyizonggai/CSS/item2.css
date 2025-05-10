@@ -1,0 +1,21 @@
+.item2 .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    justify-content: center;
+    justify-items: center;
+    padding: 40px 100px;
+}
+
+.classify {
+    width: 655px;
+    height: 420px;
+    background-size: cover;
+    background-position: center center;
+    transition: transform 0.3s ease;
+}
+
+.classify:hover {
+    transform: scale(1.1);
+    /* 鼠标移入时放大 1.1 倍 */
+}

@@ -1,0 +1,66 @@
+/* 导航栏容器样式 */
+.nav-container {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    /* 设置极高的 z-index 值确保在最上层 */
+}
+
+/* 导航栏样式 */
+nav {
+    width: 1920px;
+    height: 50px;
+    background-color: #333;
+}
+
+/* 导航栏内列表样式 */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100%;
+}
+
+/* 列表项样式 */
+nav ul li {
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    float: right;
+    height: 50px;
+}
+
+/* 链接样式 */
+nav ul li a {
+    color: rgba(255, 136, 0, 0.836);
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* 鼠标悬停时的链接样式 */
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    float: left;
+    background-image: url('../images/main/logo.png');
+    background-repeat: no-repeat;
+    background-size: 200px 50px;
+    width: 200px;
+    height: 50px;
+    margin-left: 30px;
+}
+
+.cllo {
+    margin: 0 500px;
+}
+
+.lr {
+    float: right;
+    margin-right: 30px;
+}

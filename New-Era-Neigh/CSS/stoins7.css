@@ -1,0 +1,29 @@
+.stoil7 {
+    background-image: url("../images/stoins7/back.png");
+    background-size: 100% 100%
+}
+
+.s70 {
+    height: 140px;
+    margin: 60px auto;
+}
+
+.s71 {
+    height: 695px;
+}
+
+.img71 {
+    width: 1920px;
+    height: 695px;
+}
+
+.s72 {
+    display: grid;
+    place-items: end;
+}
+
+.img72 {
+    position: relative;
+    height: 150px;
+    border: 1px solid #ccc;
+}

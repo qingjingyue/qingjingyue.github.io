@@ -1,0 +1,79 @@
+.stoil1 {
+    overflow: hidden;
+    position: relative;
+}
+
+.stoil1 img {
+    width: 1920px;
+    height: 1080px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    /* 添加淡入淡出过渡效果 */
+    z-index: 0;
+    /* 默认 z-index 为 0 */
+}
+
+.stoil1 img.active {
+    opacity: 1;
+    z-index: 1;
+    /* 当前显示图片的 z-index 为 1 */
+}
+
+.stoil1 img.prev {
+    opacity: 0.3;
+    /* 上一张图片的透明度 */
+    z-index: 0;
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    /* 按钮的 z-index 大于图片，确保显示在最上层 */
+}
+
+#prevButton {
+    left: 10px;
+    border-radius: 25%;
+    background: linear-gradient(45deg, #ff6b6b, #ffa07a);
+    color: white;
+    padding: 20px 40px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#prevButton:hover {
+    background: linear-gradient(135deg, #ff8c6b, #ffb37a);
+    transform: scale(1.05);
+}
+
+#prevButton:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#nextButton {
+    right: 10px;
+    border-radius: 25%;
+    background: linear-gradient(45deg, #ff6b6b, #ffa07a);
+    color: white;
+    padding: 20px 40px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#nextButton:hover {
+    background: linear-gradient(135deg, #ff8c6b, #ffb37a);
+    transform: scale(1.05);
+}
+
+#nextButton:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}

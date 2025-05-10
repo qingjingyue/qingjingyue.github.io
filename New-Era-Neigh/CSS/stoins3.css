@@ -1,0 +1,84 @@
+.stoil3 .biaoti3 {
+    background-image: url('../images/stoins3/stoin3.png');
+    background-repeat: no-repeat;
+    width: 587px;
+    height: 74px;
+    margin: 64px auto;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1920px;
+    margin: auto;
+    height: 750px;
+    perspective: 1000px;
+}
+
+.carousel-slide {
+    position: absolute;
+    width: 60%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.7;
+    transition: all 0.5s ease;
+    z-index: 0;
+}
+
+.carousel-slide.active {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    z-index: 1;
+}
+
+.carousel-slide.prev {
+    transform: translate(-70%, -50%) scale(0.8);
+    opacity: 0.7;
+    z-index: 0;
+}
+
+.carousel-slide.next {
+    transform: translate(-30%, -50%) scale(0.8);
+    opacity: 0.7;
+    z-index: 0;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 100px;
+}
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(112deg, #d7baa0, rgb(203 78 0));
+    color: #a600ff;
+    padding: 39px;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 50px;
+    transition: background 0.3s ease;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background: linear-gradient(135deg, rgba(34, 86, 166, 0.81), rgba(34, 86, 166, 0.91));
+}
+
+.carousel-prev:active,
+.carousel-next:active {
+    background: linear-gradient(135deg, rgba(34, 86, 166, 0.91), rgba(34, 86, 166, 1));
+    transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-prev {
+    left: 40px;
+}
+
+.carousel-next {
+    right: 40px;
+}
