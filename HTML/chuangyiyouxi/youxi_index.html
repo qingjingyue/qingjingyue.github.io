@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创意游戏</title>
+    <link rel="stylesheet" href="./CSS/youxi.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <link rel="stylesheet" href="./CSS/main.css">
+    <div class="nav">
+        <div class="logo"></div>
+        <div class="biaoti">
+            <ul class="c2_link">
+                <li><a href="../../index.html">首頁介紹</a></li>
+                <li><a href="../feiyizonggai/feiyizonggai.html">非遗總概</a></li>
+                <li><a href="../geshengwenhua/geshengwenhua.html">各省文化</a></li>
+                <li><a href="#">創意游戲</a></li>
+            </ul>
+        </div>
+    </div>
+    <div style="height: 50px;"></div>
+
+    <div class="main">
+        <!-- 题目提示样式 -->
+        <div class="t10">
+            <nav class="t01" data-question-index="0" onclick="goToQuestion(0); toggleNavStyle(this)"></nav>
+            <nav class="t01" data-question-index="1" onclick="goToQuestion(1); toggleNavStyle(this)"></nav>
+            <nav class="t01" data-question-index="2" onclick="goToQuestion(2); toggleNavStyle(this)"></nav>
+            <nav class="t01" data-question-index="3" onclick="goToQuestion(3); toggleNavStyle(this)"></nav>
+            <nav class="t01" data-question-index="4" onclick="goToQuestion(4); toggleNavStyle(this)"></nav>
+            <nav class="t01" data-question-index="5" onclick="goToQuestion(5); toggleNavStyle(this)"></nav>
+            <nav class="t01" data-question-index="6" onclick="goToQuestion(6); toggleNavStyle(this)"></nav>
+            <nav class="t01" data-question-index="7" onclick="goToQuestion(7); toggleNavStyle(this)"></nav>
+            <nav class="t01" data-question-index="8" onclick="goToQuestion(8); toggleNavStyle(this)"></nav>
+            <nav class="t01" data-question-index="9" onclick="goToQuestion(9); toggleNavStyle(this)"></nav>
+        </div>
+        <div class="index">
+            <div class="index-progress" data-number="1"></div>
+        </div>
+        <!-- 题目主体 -->
+        <div class="timu01">
+            <div class="timu_T">
+                <div class="timu_T1">
+                    <p id="question-text" class="centered-text">题目</p>
+                </div>
+                <div class="timu_T2">
+                    <div id="options-container" class="centered-text">
+                        <!-- 选择按钮将在这里动态生成 -->
+                    </div>
+                </div>
+            </div>
+            <div class="timu_img">
+                <!-- 修改为图片标签 -->
+                <img id="image" src="" alt="与题目相关的图片">
+            </div>
+        </div>
+        <!-- 上一题和下一题按钮 -->
+        <button class="prev-btn" onclick="prevQuestion()">上一题</button>
+        <button class="next-btn" onclick="nextQuestion()">下一题</button>
+        <!-- 提交按钮 -->
+        <button class="submit-btn" onclick="submitAnswers()" style="display: none;">提交</button>
+    </div>
+
+    <script>
+        let currentQuestion = 0;
+        const totalQuestions = 10;
+        const progressBar = document.querySelector('.index-progress');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const image = document.getElementById('image');
+        const submitButton = document.querySelector('.submit-btn');
+        const navs = document.querySelectorAll('.t01');
+
+        // 10个题目模板，添加正确答案
+        const questions = [
+            {
+                question: "1.图为“武强木版年画”，该非遗文化来自于( )",
+                options: ["A. 武汉市", "B. 河北省", "C. 黑龙江省", "D. 河南省"],
+                image: "./images/1.png",
+                correctAnswer: 1
+            },
+            {
+                question: "2.图为“花山岩壁画”，该非遗文化来自于( )",
+                options: ["A. 广东省", "B. 云南省", "C. 河北省", "D. 广西壮族自治区"],
+                image: "./images/2.png",
+                correctAnswer: 3
+            },
+            {
+                question: "3.图为“水族马尾绣”，该非遗文化来自于( )",
+                options: ["A. 贵州省", "B. 江西省", "C. 云南省", "D. 福建省"],
+                image: "./images/3.png",
+                correctAnswer: 0
+            },
+            {
+                question: "4.图为“枫香染”，该非遗文化来自于( )",
+                options: ["A. 云南省", "B. 贵州省", "C. 广东省", "D. 北京市"],
+                image: "./images/4.png",
+                correctAnswer: 1
+            },
+            {
+                question: "5.图为“惠山泥人”，该非遗文化来自于( )",
+                options: ["A. 天津市", "B. 北京市", "C. 江苏省", "D. 上海市"],
+                image: "./images/5.png",
+                correctAnswer: 2
+            },
+            {
+                question: "6.图为“客家瓷画像”，该非遗文化来自于( )",
+                options: ["A. 福建省", "B. 广东省", "C. 江苏省", "D. 江西省"],
+                image: "./images/6.png",
+                correctAnswer: 3
+            },
+            {
+                question: "7.图为“东巴画”，该非遗文化来自于( )",
+                options: ["A. 江西省", "B. 青海省", "C. 云南省", "D. 吉林省"],
+                image: "./images/7.png",
+                correctAnswer: 2
+            },
+            {
+                question: "8.图为“荣昌陶器”，该非遗文化来自于( )",
+                options: ["A. 重庆市", "B. 湖北省", "C. 天津市", "D. 北京市"],
+                image: "./images/8.png",
+                correctAnswer: 0
+            },
+            {
+                question: "9.图为“毕摩绘画”，该非遗文化来自于( )",
+                options: ["A. 重庆市", "B. 福建省", "C. 广东省", "D. 四川省"],
+                image: "./images/9.png",
+                correctAnswer: 3
+            },
+            {
+                question: "10.图为“宣纸制作技艺”，该非遗文化来自于( )",
+                options: ["A. 江苏省", "B. 安徽省", "C. 浙江省", "D. 四川省"],
+                image: "./images/10.png",
+                correctAnswer: 1
+            }
+        ];
+
+        // 用于记录每道题的选中选项
+        const selectedOptions = new Array(totalQuestions).fill(null);
+
+        function updateProgress() {
+            const progress = (currentQuestion + 1) / totalQuestions * 100;
+            progressBar.style.width = progress + '%';
+            progressBar.setAttribute('data-number', currentQuestion + 1);
+            // 控制提交按钮的显示和隐藏
+            if (currentQuestion === totalQuestions - 1) {
+                submitButton.style.display = 'block';
+            } else {
+                submitButton.style.display = 'none';
+            }
+        }
+
+        function updateQuestion() {
+            const current = questions[currentQuestion];
+            questionText.textContent = current.question;
+
+            // 清空选项容器
+            optionsContainer.innerHTML = '';
+
+            // 动态生成选择按钮
+            current.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.classList.add('option-btn');
+                button.addEventListener('click', () => selectOption(button));
+                optionsContainer.appendChild(button);
+
+                // 恢复选中状态
+                if (selectedOptions[currentQuestion] === index) {
+                    button.classList.add('selected');
+                }
+            });
+
+            // 修改为设置图片的 src 属性
+            image.src = current.image;
+        }
+
+        function selectOption(selectedButton) {
+            // 移除所有选项按钮的选中样式
+            const optionButtons = optionsContainer.querySelectorAll('.option-btn');
+            optionButtons.forEach(button => {
+                button.classList.remove('selected');
+            });
+
+            // 给选中的按钮添加选中样式
+            selectedButton.classList.add('selected');
+
+            // 记录选中选项的索引
+            const optionIndex = Array.from(optionButtons).indexOf(selectedButton);
+            selectedOptions[currentQuestion] = optionIndex;
+            console.log(`选择了第 ${currentQuestion + 1} 题的选项 ${optionIndex + 1}`);
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                updateProgress();
+                updateQuestion();
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions - 1) {
+                currentQuestion++;
+                updateProgress();
+                updateQuestion();
+            }
+        }
+
+        function submitAnswers() {
+            // 检查是否所有问题都已作答
+            if (selectedOptions.includes(null)) {
+                alert('请回答所有问题后再提交！');
+                return;
+            }
+
+            // 统计正确答案的数量
+            let correctCount = 0;
+            let answers = [];
+            selectedOptions.forEach((optionIndex, questionIndex) => {
+                if (optionIndex !== null) {
+                    answers.push({
+                        question: questions[questionIndex].question,
+                        answer: questions[questionIndex].options[optionIndex]
+                    });
+                    if (optionIndex === questions[questionIndex].correctAnswer) {
+                        correctCount++;
+                        // 将答对的题目对应的nav标签里面的图片替换为red.png
+                        navs[questionIndex].style.backgroundImage = "url('./images/red.png')";
+                    }
+                }
+            });
+            console.log('提交的答案:', answers);
+            alert(`答案已提交！你答对了 ${correctCount} 道题。点亮了 ${correctCount} 个中国节!`);
+        }
+
+        function goToQuestion(index) {
+            currentQuestion = index;
+            updateProgress();
+            updateQuestion();
+        }
+
+        function toggleNavStyle(nav) {
+            nav.classList.add('clicked');
+            setTimeout(() => {
+                nav.classList.remove('clicked');
+            }, 300);
+        }
+
+        // 初始化进度条和题目
+        updateProgress();
+        updateQuestion();
+
+        // 鼠标拖拽进度条圆角切换题目
+        const progressCircle = progressBar.querySelector('::after');
+        let isDragging = false;
+        let startX;
+        let initialWidth;
+
+        progressBar.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            initialWidth = parseFloat(getComputedStyle(progressBar).width);
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const deltaX = e.clientX - startX;
+                const newWidth = initialWidth + deltaX;
+                const maxWidth = progressBar.parentElement.offsetWidth;
+                const minWidth = 0;
+
+                if (newWidth >= minWidth && newWidth <= maxWidth) {
+                    progressBar.style.width = newWidth + 'px';
+                    const progress = (newWidth / maxWidth) * totalQuestions;
+                    currentQuestion = Math.round(progress) - 1;
+                    if (currentQuestion < 0) currentQuestion = 0;
+                    if (currentQuestion >= totalQuestions) currentQuestion = totalQuestions - 1;
+                    updateQuestion();
+                    progressBar.setAttribute('data-number', currentQuestion + 1);
+                    // 控制提交按钮的显示和隐藏
+                    if (currentQuestion === totalQuestions - 1) {
+                        submitButton.style.display = 'block';
+                    } else {
+                        submitButton.style.display = 'none';
+                    }
+                }
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+    </script>
+
+</body>
+
+</html>

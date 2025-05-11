@@ -77,3 +77,8 @@ a {
 .c2_link a:hover::after {
     width: 100%;
 }
+
+.map {
+    width: 1920px;
+    height: 1080px;
+}

@@ -1,9 +1,8 @@
 .stoil3 .biaoti3 {
     background-image: url('../images/stoins3/stoin3.png');
     background-repeat: no-repeat;
-    width: 587px;
-    height: 74px;
-    margin: 64px auto;
+    background-position: center center;
+    height: 200px;
 }
 
 .carousel-container {
@@ -66,12 +65,12 @@
 
 .carousel-prev:hover,
 .carousel-next:hover {
-    background: linear-gradient(135deg, rgba(34, 86, 166, 0.81), rgba(34, 86, 166, 0.91));
+    background: linear-gradient(135deg, rgba(255, 174, 0, 0.81), rgba(106, 78, 38, 0.91));
 }
 
 .carousel-prev:active,
 .carousel-next:active {
-    background: linear-gradient(135deg, rgba(34, 86, 166, 0.91), rgba(34, 86, 166, 1));
+    background: linear-gradient(135deg, rgba(255, 136, 0, 0.91), rgb(255, 64, 0));
     transform: translateY(-50%) scale(0.95);
 }
 

@@ -1,0 +1,217 @@
+.main {
+    width: 1920px;
+    height: 1080px;
+    background-image: url("../images/background.jpg");
+    position: relative;
+    border: 2px solid rgb(149, 106, 58);
+}
+
+body {
+    background-image: url('../images/background.jpg');
+    width: 1920px;
+    margin: 0 auto;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.t10 {
+    height: 90px;
+    width: 1920px;
+    display: flex;
+}
+
+.t01 {
+    width: 192px;
+    height: 90px;
+    background-image: url("../images/white.png");
+    background-size: 158px 80px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* 点击时的瞬间效果 */
+.t01.clicked {
+    transform: scale(0.95);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    z-index: 10;
+}
+
+.index {
+    width: 1920px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: relative;
+}
+
+.index-progress {
+    height: 100%;
+    background: linear-gradient(to right, #b9936c, #927151);
+    width: 0;
+    transition: width 0.3s ease;
+    position: absolute;
+    left: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.index-progress::after {
+    content: attr(data-number);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    background-color: rgb(142, 142, 142);
+    border-radius: 50%;
+    position: absolute;
+    right: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(0, 0, 0);
+    font-size: 19.2px;
+}
+
+.timu01 {
+    width: 1920px;
+    height: 980px;
+}
+
+.timu_T {
+    width: 960px;
+    height: 980px;
+    float: left;
+}
+
+.timu_T1 {
+    width: 960px;
+    height: 490px;
+    /* 进一步增大题目字体大小 */
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timu_T2 {
+    width: 960px;
+    height: 490px;
+    /* 进一步增大选项字体大小 */
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    /* 修改为垂直排列 */
+    align-items: center;
+    flex-direction: column;
+}
+
+.timu_img {
+    width: 960px;
+    height: 980px;
+    float: left;
+    /* 让图片在盒子里居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 美化上一题和下一题按钮 */
+.prev-btn,
+.next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 15px 30px;
+    background: linear-gradient(to bottom, #b9936c, #927151);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    background: linear-gradient(to bottom, #927151, #70543d);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.prev-btn:active,
+.next-btn:active {
+    background: linear-gradient(to bottom, #70543d, #513c2b);
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* 提交按钮样式 */
+.submit-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 30px;
+    background: linear-gradient(to bottom, #b9936c, #927151);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(to bottom, #927151, #70543d);
+    transform: translateX(-50%) scale(1.05);
+}
+
+.submit-btn:active {
+    background: linear-gradient(to bottom, #70543d, #513c2b);
+    transform: translateX(-50%) scale(0.95);
+}
+
+/* 选择按钮样式 */
+.option-btn {
+    padding: 10px 20px;
+    margin: 20px;
+    background: linear-gradient(to bottom, #b9936c, #927151);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.option-btn:hover {
+    background: linear-gradient(to bottom, #927151, #70543d);
+    transform: scale(1.05);
+}
+
+.option-btn:active {
+    background: linear-gradient(to bottom, #70543d, #513c2b);
+    transform: scale(0.95);
+}
+
+/* 选中状态的样式 */
+.option-btn.selected {
+    background: linear-gradient(to bottom, #ff6347, #ff4500);
+}
+
+.centered-text {
+    text-align: center;
+}

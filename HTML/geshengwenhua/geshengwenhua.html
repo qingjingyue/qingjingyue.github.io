@@ -5,11 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>各省文化</title>
-    <link rel="stylesheet" href="./CSS/main.css">
+    <!-- 引入 ECharts 库 -->
+    <script src="./JS/echarts.min.js"></script>
+    <!-- 引入中国地图数据 -->
+    <script src="./JS/china.js"></script>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        #china-map {
+            width: 1920px;
+            height: 1080px;
+            border: 2px solid #389BB7;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        div[style*="display: block;"] {
+            display: none !important;
+        }
+    </style>
+
 </head>
 
 <body>
     <!-- 导航栏 -->
+    <link rel="stylesheet" href="./CSS/main.css">
     <div class="nav">
         <div class="logo"></div>
         <div class="biaoti">
@@ -17,16 +44,60 @@
                 <li><a href="../../index.html">首頁介紹</a></li>
                 <li><a href="../feiyizonggai/feiyizonggai.html">非遗總概</a></li>
                 <li><a href="#">各省文化</a></li>
-                <li><a href="#">創意游戲</a></li>
+                <li><a href="../chuangyiyouxi/youxi_index.html">創意游戲</a></li>
+
             </ul>
         </div>
     </div>
 
+    <!-- 用于显示地图的容器 -->
+    <div id="china-map"></div>
+    <script>
+        // 初始化 ECharts 实例
+        var myChart = echarts.init(document.getElementById('china-map'));
 
+        // 配置 ECharts 选项
+        var option = {
+            tooltip: {
+                trigger: 'item'
+            },
+            series: [
+                {
+                    name: '中国地图',
+                    type: 'map',
+                    map: 'china',
+                    roam: true,  // 允许鼠标缩放和拖动
+                    label: {
+                        show: true,
+                        color: '#000'
+                    },
+                    itemStyle: {
+                        normal: {
+                            borderColor: '#389BB7',
+                            borderWidth: 1,
+                            areaColor: '#fff'
+                        },
+                        emphasis: {
+                            areaColor: '#99CCFF',
+                        }
+                    }
+                }
+            ]
+        };
 
+        // 使用刚指定的配置项和数据显示图表
+        myChart.setOption(option);
 
-
-
+        // 监听地图点击事件
+        myChart.on('click', function (params) {
+            // 获取点击的省份名称
+            var provinceName = params.name;
+            // 跳转到对应的省份页面
+            if (provinceName) {
+                window.location.href = './省份/' + provinceName + '/' + provinceName + '.html';
+            }
+        });
+    </script>
 </body>
 
 </html>

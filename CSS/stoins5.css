@@ -1,12 +1,12 @@
 .stoil5 .biaoti5 {
     background-image: url('../images/stoins5/biaoti5.png');
     background-repeat: no-repeat;
-    width: 675px;
-    height: 70px;
-    margin: 90px auto;
+    background-position: center center;
+    height: 200px;
 }
 
 .stoil5 .text p {
+    font-weight: 700;
     font-size: 28px;
     text-indent: 2em;
     text-align: left;

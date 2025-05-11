@@ -1,58 +1,40 @@
 .stoil4 .biaoti4 {
     background-image: url('../images/stoins4/disanbankuaiyishuzi.png');
     background-repeat: no-repeat;
-    width: 664px;
-    height: 77px;
-    margin: 0 auto;
+    background-position: center center;
+    height: 200px;
 }
 
-.stoil4 .wepo1 {
+.stoil4 .wepo {
     display: flex;
     justify-content: center;
     margin: 40px auto;
 }
 
-.stoil4 .wepo1 video {
+.stoil4 .wepo video {
     width: 800px;
     height: 425px;
     margin: 100px auto;
 }
 
-.stoil4 .wepo1 video::-webkit-media-controls-timeline {
+.stoil4 .wepo video::-webkit-media-controls-timeline {
     display: none;
 }
 
-.stoil4 .wepo1 ul {
+.stoil4 .wepo ul {
     list-style-type: none;
-    padding: 0;
-    width: 650px;
-    margin: 0 auto;
+    width: 1040px;
+    margin: auto auto;
 }
 
-.stoil4 .wepo1 ul li {
+.stoil4 .wepo ul li {
+    font-weight: 700;
+    display: block;
+    font-size: 30px;
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
 
-.stoil4 .wepo1 ul li.fade-in {
+.stoil4 .wepo ul li.fade-in {
     opacity: 1;
-}
-
-.stoil4 .wepo2 {
-    display: flex;
-    justify-content: center;
-}
-
-.stoil4 .wepo2 ul {
-    width: 500px;
-    margin: 0 auto;
-}
-
-.stoil4 .wepo2 ul li {
-    color: #000;
-}
-
-.ul4font {
-    color: rgb(174, 68, 2);
-    margin: 0 auto;
 }
