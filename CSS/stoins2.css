@@ -42,3 +42,13 @@
     font-size: 30px;
     margin: 10px;
 }
+
+.stoil2 .fazhantu .wenzikuang ul li a {
+    color: rgb(27, 86, 106);
+}
+
+.stoil2 .fazhantu .wenzikuang ul li a:hover {
+    color: rgb(27, 86, 106);
+    text-decoration: underline;
+    text-decoration-color: rgb(27, 86, 106);
+}
