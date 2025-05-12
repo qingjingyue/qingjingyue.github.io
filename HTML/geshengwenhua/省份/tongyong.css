@@ -17,6 +17,8 @@ body {
     font-size: 40px;
     margin-top: 60px;
     text-indent: 2em;
+    width: 1500px;
+    margin: 0 auto;
 }
 
 .tupian {

@@ -1,66 +1,65 @@
-/* 导航栏容器样式 */
-.nav-container {
+li {
+    list-style-type: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 9px;
+}
+
+a {
+    text-decoration: none;
+    color: #f5f5f5;
+}
+
+.nav {
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 9999;
-    /* 设置极高的 z-index 值确保在最上层 */
-}
-
-/* 导航栏样式 */
-nav {
-    width: 1920px;
+    width: 100%;
+    max-width: 1920px;
     height: 50px;
-    background-color: #333;
-}
-
-/* 导航栏内列表样式 */
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    background: rgb(40 2 1 / 64%);
+    z-index: 1000;
     display: flex;
-    height: 100%;
-}
-
-/* 列表项样式 */
-nav ul li {
-    margin-right: 30px;
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    height: 100%;
-    float: right;
-    height: 50px;
+    padding: 0 30px;
+    box-sizing: border-box;
 }
 
-/* 链接样式 */
-nav ul li a {
-    color: rgba(255, 136, 0, 0.836);
-    text-decoration: none;
-    font-size: 18px;
-}
-
-/* 鼠标悬停时的链接样式 */
-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-.logo {
-    float: left;
+.nav .logo {
     background-image: url('../images/main/logo.png');
     background-repeat: no-repeat;
     background-size: 200px 50px;
     width: 200px;
     height: 50px;
-    margin-left: 30px;
 }
 
-.cllo {
-    margin: 0 500px;
+.nav .biaoti {
+    height: 50px;
 }
 
-.lr {
-    float: right;
-    margin-right: 30px;
+.c2_link a {
+    color: rgb(255, 178, 123);
+    font-size: 22px;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.c2_link a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: #ff6200;
+    transition: width 0.3s ease;
+}
+
+.c2_link a:hover {
+    color: #ff6200;
+}
+
+.c2_link a:hover::after {
+    width: 100%;
 }
