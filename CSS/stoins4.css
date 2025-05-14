@@ -11,16 +11,6 @@
     margin: 40px auto;
 }
 
-.stoil4 .wepo video {
-    width: 800px;
-    height: 425px;
-    margin: 100px auto;
-}
-
-.stoil4 .wepo video::-webkit-media-controls-timeline {
-    display: none;
-}
-
 .stoil4 .wepo ul {
     list-style-type: none;
     width: 1040px;
@@ -37,4 +27,26 @@
 
 .stoil4 .wepo ul li.fade-in {
     opacity: 1;
+}
+
+.stoil4 .media-container {
+    position: relative;
+    width: 700px;
+    height: 500px;
+    margin: auto;
+}
+
+.stoil4 .media-container img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.stoil4 .media-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
 }

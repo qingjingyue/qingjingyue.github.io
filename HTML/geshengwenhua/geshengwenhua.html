@@ -13,13 +13,13 @@
         body {
             margin: 0;
             display: flex;
-            justify-content: center;
             align-items: center;
             min-height: 100vh;
             background-color: #f0f0f0;
         }
 
         #china-map {
+            position: absolute;
             width: 1920px;
             height: 1080px;
             border: 2px solid #389BB7;
@@ -27,9 +27,10 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
 
-        div[style*="display: block;"] {
+        /* div[style*="display: block;"] {
             display: none !important;
-        }
+        } */
+
     </style>
 
 </head>
@@ -52,6 +53,7 @@
 
     <!-- 用于显示地图的容器 -->
     <div id="china-map"></div>
+
     <script>
         // 初始化 ECharts 实例
         var myChart = echarts.init(document.getElementById('china-map'));
